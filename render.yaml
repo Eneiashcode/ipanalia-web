@@ -1,8 +1,15 @@
 services:
   - type: web
-    name: ipanalia-web
+    name: app-igreja-analia
     env: node
-    buildCommand: npm install && npm run build
-    startCommand: npm run preview
-    branch: master
-    region: oregon
+    plan: free
+    buildCommand: npm run build
+    startCommand: npx serve -s dist
+    build:
+      envVars:
+        - key: NODE_VERSION
+          value: 22
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+    staticPublishPath: dist
